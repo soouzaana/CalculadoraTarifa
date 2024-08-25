@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de tarifa</title>
+</head>
+<body>
+    <h1>Calculadora de Tarifa</h1>
+    Digite sua idade <br/>
+    <input type="number" id="idade" placeholder="Digite sua idade" step="0.01"/> <br/> <br/>
+    <button onclick="CalcularTarifa()">Calcular Tarifa</button>
+    <p></p>
+
+    <script>
+        function CalcularTarifa(){
+            const idade = parseFloat(document.getElementById("idade").value);
+            let tarifa = 2.5;
+            let resultado = '';
+
+            if(idade < 6){
+                resultado = 'Não paga tarifa';
+            }
+            else if(idade >= 6 && idade < 18){
+                tarifa = (2.5 - (10 / 100) * 2.5).toFixed(2);
+                resultado = 'O valor da tarifa é ' + tarifa;
+            }
+            else if(idade >= 18 && idade <= 59){
+                resultado = 'O valor da tarifa é ' + tarifa;
+            }
+            else{
+                tarifa = (2.5 - (30 / 100) * 2.5).toFixed(2);
+                resultado = 'O valor da tarifa é ' + tarifa;
+            }
+
+            document.querySelector("p").innerHTML = resultado;
+        }
+    </script>
+</body>
+</html>
